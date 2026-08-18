@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CRM Gestión - Gestión Premium para tu Negocio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#0A0A0B">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-primary: #0A0A0B;
+            --accent: #3B82F6;
+            --accent-gradient: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        }
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: var(--bg-primary);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            position: relative;
+        }
+        .font-heading { font-family: 'Outfit', sans-serif; }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 60%);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        /* Prevent horizontal scroll from absolute positioned elements */
+        .prevent-overflow {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        .image-card {
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .image-card:hover {
+            transform: scale(1.02) translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-500/30 prevent-overflow">
+    <div class="fixed inset-0 hero-gradient pointer-events-none"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 w-full bg-[#0A0A0B]/85 backdrop-blur-xl border-b border-white/10 px-4 md:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex justify-between items-center relative">
+            <div class="flex items-center gap-1.5 sm:gap-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <img src="logo.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain rounded-lg">
+                <span class="font-heading font-bold text-lg sm:text-xl md:text-2xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent uppercase">CRM Gestión</span>
+            </div>
+            <div class="flex items-center gap-3 md:gap-6">
+                <a href="#" class="hidden md:block text-sm font-medium text-white/60 hover:text-white transition-colors">Inicio</a>
+                <a href="#interfaz" class="hidden md:block text-sm font-medium text-white/60 hover:text-white transition-colors">Interfaz</a>
+                <a href="#features" class="hidden md:block text-sm font-medium text-white/60 hover:text-white transition-colors">Características</a>
+                <a href="#contact" class="hidden md:block text-sm font-medium text-white/60 hover:text-white transition-colors">Contacto</a>
+            </div>
+            <!-- Botón Hamburguesa Móvil -->
+            <button id="menuToggle" class="block md:hidden text-white/80 hover:text-white focus:outline-none p-1 z-50" aria-label="Toggle menu">
+                <i class="fas fa-bars text-lg transition-transform" id="menuIcon"></i>
+            </button>
+            <!-- Menú Desplegable Móvil -->
+            <div id="mobileMenu" class="absolute top-[120%] left-0 right-0 bg-[#0A0A0B]/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl p-4 flex flex-col gap-3 text-center opacity-0 pointer-events-none scale-95 origin-top transition-all duration-300 md:hidden z-50">
+                <a href="#" class="mobile-link py-2 text-white/70 hover:text-white font-medium text-sm border-b border-white/5 transition-all">Inicio</a>
+                <a href="#interfaz" class="mobile-link py-2 text-white/70 hover:text-white font-medium text-sm border-b border-white/5 transition-all">Interfaz</a>
+                <a href="#features" class="mobile-link py-2 text-white/70 hover:text-white font-medium text-sm border-b border-white/5 transition-all">Características</a>
+                <a href="#contact" class="mobile-link py-2 text-white/70 hover:text-white font-medium text-sm transition-all">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 md:pt-32 pb-16 px-4 md:px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <!-- Left Column (Text & Button) -->
+                <div class="lg:col-span-7 space-y-6 md:space-y-8 text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[9px] md:text-[10px] font-bold text-blue-400 uppercase tracking-widest animate-pulse">
+                        Software de Gestión Premium v1.0.25
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-[1.1] tracking-tighter">
+                        Control Total de tus <br class="hidden sm:inline">
+                        <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Clientes y Pedidos</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-white/40 max-w-xl leading-relaxed">
+                        Optimiza tu flujo de trabajo con la herramienta de gestión más avanzada del ecosistema AntiGravity. Diseñada para la eficiencia absoluta.
+                    </p>
+                    <div class="flex flex-col items-start gap-4 pt-2">
+                        <a href="CRM-Gestión-v1.0.25-Setup.exe" class="w-full sm:w-auto group relative px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-bold transition-all shadow-2xl shadow-blue-500/30 flex items-center justify-center gap-3">
+                            <i class="fab fa-windows text-xl"></i>
+                            <span>Descargar para Windows</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Right Column (Mockup) -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-lg lg:max-w-none animate-float">
+                        <!-- Glowing background blur behind the mockup -->
+                        <div class="absolute -inset-2 rounded-[2rem] bg-gradient-to-r from-blue-500 to-blue-600 opacity-20 blur-3xl pointer-events-none"></div>
+                        <div class="glass rounded-[2rem] p-2 border-white/10 shadow-2xl relative">
+                            <img src="crm_gestion_mockup.avif" alt="CRM Gestión Mockup" class="rounded-[1.7rem] w-full h-auto object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Grid -->
+    <section id="interfaz" class="py-12 md:py-20 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-4">
+                <h2 class="text-3xl md:text-5xl font-bold font-heading tracking-tight">Interfaz de Sistema</h2>
+                <p class="text-white/60 text-base md:text-lg leading-relaxed">Capturas de la interfaz unificada de la herramienta y el control de CRM Gestión.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                <!-- Dashboard -->
+                <div class="space-y-4 group">
+                    <div class="glass rounded-3xl p-2 border-white/10 shadow-2xl overflow-hidden image-card aspect-[1919/1005] cursor-pointer lightbox-trigger" data-src="dashboard.avif" data-caption="Escritorio Principal" title="Haz clic para ampliar">
+                        <img src="dashboard.avif" alt="Escritorio Principal" class="rounded-2xl w-full h-full object-cover object-left-top transition-transform duration-300 group-hover:scale-[1.02]">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 rounded-2xl">
+                            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-lg font-bold font-heading text-blue-400">Escritorio Principal</h3>
+                        <p class="text-sm text-white/40">Visión global de tu negocio con analíticas en tiempo real.</p>
+                    </div>
+                </div>
+                <!-- Orders -->
+                <div class="space-y-4 group">
+                    <div class="glass rounded-3xl p-2 border-white/10 shadow-2xl overflow-hidden image-card aspect-[1919/1005] cursor-pointer lightbox-trigger" data-src="orders.avif" data-caption="Gestión de Pedidos" title="Haz clic para ampliar">
+                        <img src="orders.avif" alt="Gestión de Pedidos" class="rounded-2xl w-full h-full object-cover object-left-top transition-transform duration-300 group-hover:scale-[1.02]">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 rounded-2xl">
+                            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-lg font-bold font-heading text-blue-400">Gestión de Pedidos</h3>
+                        <p class="text-sm text-white/40">Control exhaustivo de cada pedido, estados y fechas clave.</p>
+                    </div>
+                </div>
+                <!-- Customers -->
+                <div class="space-y-4 group">
+                    <div class="glass rounded-3xl p-2 border-white/10 shadow-2xl overflow-hidden image-card aspect-[1919/1005] cursor-pointer lightbox-trigger" data-src="customers.avif" data-caption="Base de Clientes" title="Haz clic para ampliar">
+                        <img src="customers.avif" alt="Base de Clientes" class="rounded-2xl w-full h-full object-cover object-left-top transition-transform duration-300 group-hover:scale-[1.02]">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 rounded-2xl">
+                            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-lg font-bold font-heading text-blue-400">Base de Clientes</h3>
+                        <p class="text-sm text-white/40">Base de datos centralizada con historial completo y perfiles.</p>
+                    </div>
+                </div>
+                <!-- Settings -->
+                <div class="space-y-4 group">
+                    <div class="glass rounded-3xl p-2 border-white/10 shadow-2xl overflow-hidden image-card aspect-[1919/1005] cursor-pointer lightbox-trigger" data-src="settings.avif" data-caption="Configuración & Branding" title="Haz clic para ampliar">
+                        <img src="settings.avif" alt="Configuración & Branding" class="rounded-2xl w-full h-full object-cover object-left-top transition-transform duration-300 group-hover:scale-[1.02]">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 rounded-2xl">
+                            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-lg font-bold font-heading text-blue-400">Personalización</h3>
+                        <p class="text-sm text-white/40">Adapta el CRM a tu marca con logos e identidad propia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-24 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-4">
+                <h2 class="text-3xl md:text-5xl font-bold font-heading tracking-tight">Características del Sistema</h2>
+                <p class="text-white/60 text-base md:text-lg leading-relaxed">Funcionalidades diseñadas para optimizar la eficiencia y el control de tu negocio en el CRM Gestión.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div class="glass p-8 rounded-3xl space-y-4 border-white/5 hover:border-blue-500/30 transition-all group">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <i class="fas fa-users text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold font-heading">Gestión Inteligente</h3>
+                <p class="text-white/40 text-sm leading-relaxed">Organiza tus clientes con perfiles detallados, historial de pagos y notas personalizadas.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl space-y-4 border-white/5 hover:border-blue-500/30 transition-all group">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <i class="fas fa-calendar-check text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold font-heading">Calendario de Pedidos</h3>
+                <p class="text-white/40 text-sm leading-relaxed">Visualiza tu carga de trabajo diaria y mensual con una interfaz de calendario sincronizada.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl space-y-4 border-white/5 hover:border-blue-500/30 transition-all group">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <i class="fas fa-shield-alt text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold font-heading">Resiliencia Local</h3>
+                <p class="text-white/40 text-sm leading-relaxed">Tus datos nunca salen de tu equipo. Almacenamiento local seguro con backups automáticos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seccion de Contacto -->
+    <section id="contact" class="py-16 md:py-24 px-4 md:px-6 relative">
+        <div class="max-w-3xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <h2 class="text-3xl md:text-5xl font-heading font-bold">Contacto</h2>
+                <p class="text-sm md:text-base text-white/40 max-w-lg mx-auto">¿Tienes alguna duda o consulta? Completa el formulario y te responderemos a la brevedad.</p>
+            </div>
+            
+            <div class="glass p-4 sm:p-6 md:p-10 rounded-3xl space-y-6 relative overflow-hidden">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-[10px] text-white/40 uppercase font-bold tracking-wider block">Nombre completo</label>
+                            <input id="formName" type="text" required placeholder="Tu nombre" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500/50 transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] text-white/40 uppercase font-bold tracking-wider block">Correo electrónico</label>
+                            <input id="formEmail" type="email" required placeholder="tu@email.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500/50 transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] text-white/40 uppercase font-bold tracking-wider block">Teléfono (Opcional)</label>
+                            <input id="formPhone" type="tel" placeholder="+34..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500/50 transition-all">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] text-white/40 uppercase font-bold tracking-wider block">Mensaje</label>
+                        <textarea id="formMessage" rows="4" required placeholder="Escribe tu mensaje aquí..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500/50 transition-all resize-none"></textarea>
+                    </div>
+                    <button id="submitButton" type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+                        <i id="submitIcon" class="fas fa-paper-plane text-xs"></i>
+                        <span id="submitText">Enviar Mensaje</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5 px-4 md:px-6 bg-black/20 text-center relative z-10 select-none">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-[0.95rem] text-gray-400">&copy; 2026 Aritz Bahamonde Larxé. Todos los derechos reservados.</p>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+                <button onclick="openLegalModal('notice')" class="text-xs text-gray-400 hover:text-white transition-colors cursor-pointer bg-transparent border-none">
+                    Aviso Legal
+                </button>
+                <button onclick="openLegalModal('privacy')" class="text-xs text-gray-400 hover:text-white transition-colors cursor-pointer bg-transparent border-none">
+                    Política de Privacidad
+                </button>
+                <button onclick="openLegalModal('cookies')" class="text-xs text-gray-400 hover:text-white transition-colors cursor-pointer bg-transparent border-none">
+                    Política de Cookies
+                </button>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitButton');
+            const submitText = document.getElementById('submitText');
+            const submitIcon = document.getElementById('submitIcon');
+            
+            const name = document.getElementById('formName').value;
+            const email = document.getElementById('formEmail').value;
+            const phone = document.getElementById('formPhone').value;
+            const message = document.getElementById('formMessage').value;
+            
+            // Cambiar botón a estado "enviando"
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-80', 'cursor-wait');
+            submitText.innerText = 'Sincronizando...';
+            submitIcon.className = 'fas fa-spinner animate-spin text-xs';
+            
+            const payload = {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+                notes: 'Enviado desde el formulario de contacto estático de CRM Gestión.',
+                source: 'CRM Gestión'
+            };
+            try {
+                const res = await fetch('https://aritz-bahamonde.vercel.app/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (res.ok) {
+                    // Transición exitosa
+                    submitIcon.className = 'fas fa-check-circle text-xs';
+                    submitText.innerText = '¡Enviado con Éxito!';
+                    submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-500');
+                    submitBtn.classList.add('bg-emerald-600');
+                    
+                    // Limpiar formulario
+                    document.getElementById('contactForm').reset();
+                    
+                    setTimeout(() => {
+                        submitIcon.className = 'fas fa-paper-plane text-xs';
+                        submitText.innerText = 'Enviar Mensaje';
+                        submitBtn.classList.remove('bg-emerald-600', 'cursor-wait', 'opacity-80');
+                        submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-500');
+                        submitBtn.disabled = false;
+                    }, 5000);
+                } else {
+                    throw new Error('Server returned error status');
+                }
+            } catch (err) {
+                console.error('[Contact Form Error]', err);
+                submitIcon.className = 'fas fa-exclamation-triangle text-xs';
+                submitText.innerText = 'Error al enviar';
+                submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-500');
+                submitBtn.classList.add('bg-red-600');
+                
+                setTimeout(() => {
+                    submitIcon.className = 'fas fa-paper-plane text-xs';
+                    submitText.innerText = 'Enviar Mensaje';
+                    submitBtn.classList.remove('bg-red-600', 'cursor-wait', 'opacity-80');
+                    submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-500');
+                    submitBtn.disabled = false;
+                }, 5000);
+            }
+        });
+    </script>
+
+    <!-- Cookies Modal -->
+    <div id="cookiesModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500">
+        <!-- Glowing background blur behind the modal card -->
+        <div class="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-r from-blue-500 to-blue-600 opacity-10 blur-3xl pointer-events-none"></div>
+        <div id="cookiesCard" class="glass rounded-[2.5rem] p-6 sm:p-8 max-w-md w-full border-white/10 shadow-2xl scale-95 transition-all duration-500 flex flex-col items-center text-center space-y-6 relative overflow-hidden">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 shadow-inner">
+                <i class="fas fa-cookie-bite text-3xl text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.4)] animate-pulse"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold font-heading text-white">Aviso de Cookies</h3>
+                <p class="text-sm text-white/50 leading-relaxed">
+                    Utilizamos cookies propias y de terceros para optimizar tu experiencia en el ecosistema AntiGravity, analizar la navegación y ofrecerte funciones personalizadas de alta calidad.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full pt-2">
+                <button id="declineCookies" class="w-full sm:w-auto flex-1 px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 hover:text-white rounded-xl font-medium text-sm transition-all">
+                    Rechazar
+                </button>
+                <button id="acceptCookies" class="w-full sm:w-auto flex-1 px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-500/20">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookies Consent Handler
+        const cookiesModal = document.getElementById('cookiesModal');
+        const cookiesCard = document.getElementById('cookiesCard');
+        const acceptBtn = document.getElementById('acceptCookies');
+        const declineBtn = document.getElementById('declineCookies');
+
+        const showCookies = () => {
+            cookiesModal.classList.remove('opacity-0', 'pointer-events-none');
+            cookiesCard.classList.remove('scale-95');
+            cookiesCard.classList.add('scale-100');
+        };
+
+        const hideCookies = () => {
+            cookiesModal.classList.add('opacity-0', 'pointer-events-none');
+            cookiesCard.classList.remove('scale-100');
+            cookiesCard.classList.add('scale-95');
+        };
+
+        if (!localStorage.getItem('crm_cookies_consent_v1')) {
+            setTimeout(showCookies, 1000);
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('crm_cookies_consent_v1', 'accepted');
+            hideCookies();
+        });
+
+        declineBtn.addEventListener('click', () => {
+            localStorage.setItem('crm_cookies_consent_v1', 'declined');
+            hideCookies();
+        });
+
+        // Mobile Menu Toggle Handler
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('opacity-100');
+            if (isOpen) {
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+                menuIcon.className = 'fas fa-bars text-lg';
+            } else {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+                menuIcon.className = 'fas fa-times text-lg';
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+                menuIcon.className = 'fas fa-bars text-lg';
+            });
+        });
+    </script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[999] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" style="background: rgba(0,0,0,0.9); backdrop-filter: blur(12px);">
+        <!-- Close button (Floating Top-Right) -->
+        <button id="lightbox-close" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 p-4 rounded-full z-[1000] cursor-pointer" aria-label="Cerrar modal" style="width: 48px; height: 48px; display: flex; items-center; justify-content: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div id="lightbox-inner" class="relative max-w-6xl w-full transform scale-95 transition-transform duration-300">
+            <!-- Image -->
+            <img id="lightbox-img" src="" alt="" class="w-full h-auto rounded-2xl shadow-2xl border border-white/10 object-contain" style="max-height: 85vh;">
+            <!-- Caption -->
+            <p id="lightbox-caption" class="mt-4 text-center text-white/60 text-sm font-medium"></p>
+        </div>
+    </div>
+
+    <script>
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxInner = document.getElementById('lightbox-inner');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        function openLightbox(src, caption) {
+            lightboxImg.src = src;
+            lightboxImg.alt = caption;
+            lightboxCaption.textContent = caption;
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+            lightbox.classList.add('opacity-100', 'pointer-events-auto');
+            lightboxInner.classList.remove('scale-95');
+            lightboxInner.classList.add('scale-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('opacity-100', 'pointer-events-auto');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            lightboxInner.classList.remove('scale-100');
+            lightboxInner.classList.add('scale-95');
+            document.body.style.overflow = '';
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
+        }
+
+        document.querySelectorAll('.lightbox-trigger').forEach(el => {
+            el.addEventListener('click', () => {
+                const src = el.dataset.src;
+                const caption = el.dataset.caption || '';
+                openLightbox(src, caption);
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Click outside to close
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeLegalModal();
+            }
+        });
+
+        // Legal Modals Functions
+        function openLegalModal(type) {
+            const legalModal = document.getElementById('legalModal');
+            const legalCard = document.getElementById('legalCard');
+            const contentNotice = document.getElementById('legalContentNotice');
+            const contentPrivacy = document.getElementById('legalContentPrivacy');
+            const contentCookies = document.getElementById('legalContentCookies');
+
+            if (!legalModal || !legalCard || !contentNotice || !contentPrivacy || !contentCookies) return;
+
+            // Hide all contents first
+            contentNotice.classList.add('hidden');
+            contentPrivacy.classList.add('hidden');
+            contentCookies.classList.add('hidden');
+
+            // Show selected content
+            if (type === 'notice') {
+                contentNotice.classList.remove('hidden');
+            } else if (type === 'privacy') {
+                contentPrivacy.classList.remove('hidden');
+            } else if (type === 'cookies') {
+                contentCookies.classList.remove('hidden');
+            }
+
+            // Show modal
+            legalModal.classList.remove('opacity-0', 'pointer-events-none');
+            legalCard.classList.remove('scale-95');
+            legalCard.classList.add('scale-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLegalModal() {
+            const legalModal = document.getElementById('legalModal');
+            const legalCard = document.getElementById('legalCard');
+
+            if (!legalModal || !legalCard) return;
+
+            legalModal.classList.add('opacity-0', 'pointer-events-none');
+            legalCard.classList.remove('scale-100');
+            legalCard.classList.add('scale-95');
+            document.body.style.overflow = '';
+        }
+    </script>
+
+    <!-- Legal Pages Modal -->
+    <div id="legalModal" onclick="if(event.target === this) closeLegalModal()" class="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-r from-blue-500 to-blue-600 opacity-5 blur-3xl pointer-events-none"></div>
+        <div id="legalCard" class="bg-zinc-950 border border-white/10 rounded-[2.5rem] p-6 sm:p-8 max-w-2xl w-full shadow-2xl scale-95 transition-all duration-300 relative max-h-[85vh] overflow-y-auto">
+            <!-- Close button -->
+            <button onclick="closeLegalModal()" class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-2 rounded-full cursor-pointer border-none" aria-label="Cerrar modal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <!-- Modal Contents -->
+            <div id="legalContentNotice" class="hidden space-y-4 text-left">
+                <h3 class="text-2xl font-bold text-white mb-4 font-heading">Aviso Legal</h3>
+                <div class="text-sm text-white/70 space-y-4 leading-relaxed">
+                    <h4 class="text-white font-semibold mt-4">1. Datos Identificativos</h4>
+                    <p>
+                        En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, 
+                        de Servicios de la Sociedad de la Información y del Comercio Electrónico, a continuación se reflejan los siguientes datos:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Titular:</strong> Aritz Bahamonde Larxé</li>
+                        <li><strong>Contacto:</strong> aritz.bahamonde@gmail.com</li>
+                        <li><strong>Actividad:</strong> Desarrollo de Software e Inteligencia Artificial</li>
+                    </ul>
+                    <h4 class="text-white font-semibold mt-4">2. Usuarios</h4>
+                    <p>
+                        El acceso y/o uso de este portal atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, 
+                        las Condiciones Generales de Uso aquí reflejadas.
+                    </p>
+                </div>
+            </div>
+
+            <div id="legalContentPrivacy" class="hidden space-y-4 text-left">
+                <h3 class="text-2xl font-bold text-white mb-4 font-heading">Política de Privacidad</h3>
+                <div class="text-sm text-white/70 space-y-4 leading-relaxed">
+                    <h4 class="text-white font-semibold mt-4">1. Responsable del Tratamiento</h4>
+                    <p>
+                        El responsable del tratamiento de sus datos personales es Aritz Bahamonde Larxé. 
+                        Los datos recopilados a través de nuestro formulario de contacto se utilizan exclusivamente para la gestión de consultas profesionales y servicios relacionados con el ecosistema.
+                    </p>
+                    <h4 class="text-white font-semibold mt-4">2. Finalidad y Consentimiento</h4>
+                    <p>
+                        Al interactuar con el formulario y facilitar voluntariamente sus datos (nombre, email, teléfono, mensaje), 
+                        el usuario consiente el tratamiento de los mismos para recibir una respuesta a su solicitud.
+                    </p>
+                    <p>
+                        Sus datos no serán cedidos a terceros, salvo obligación legal, y se almacenan de forma totalmente segura.
+                    </p>
+                    <h4 class="text-white font-semibold mt-4">3. Derechos del Usuario</h4>
+                    <p>
+                        Usted tiene derecho a acceder, rectificar, suprimir sus datos y otros derechos mediante el envío de un correo electrónico al titular.
+                    </p>
+                </div>
+            </div>
+
+            <div id="legalContentCookies" class="hidden space-y-4 text-left">
+                <h3 class="text-2xl font-bold text-white mb-4 font-heading">Política de Cookies</h3>
+                <div class="text-sm text-white/70 space-y-4 leading-relaxed">
+                    <h4 class="text-white font-semibold mt-4">1. ¿Qué son las cookies?</h4>
+                    <p>
+                        Una cookie es un fichero que se descarga en su dispositivo al acceder a determinadas páginas web. 
+                        Las cookies permiten a una página web, entre otras cosas, almacenar y recuperar información sobre los hábitos 
+                        de navegación de un usuario o de su equipo.
+                    </p>
+                    <h4 class="text-white font-semibold mt-4">2. Cookies utilizadas</h4>
+                    <p>Este sitio web utiliza las siguientes cookies:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Cookies técnicas:</strong> Necesarias para el correcto funcionamiento de las características del sitio web y el almacenamiento del consentimiento de cookies.</li>
+                        <li><strong>Cookies de análisis:</strong> Para entender cómo interactúan los usuarios con la web.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
