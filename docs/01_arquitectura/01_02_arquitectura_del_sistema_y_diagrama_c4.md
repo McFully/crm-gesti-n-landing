@@ -1,16 +1,17 @@
 # ARQUITECTURA DEL SISTEMA Y DIAGRAMA C4
 
 ## 1. VISTA DE CONTEXTO (NIVEL 1 C4)
-El sistema **Web CRM Gestión** opera como núcleo de procesamiento e interfaz, comunicándose con servicios periféricos y almacenamiento.
+El sistema **Web CRM Gestión** es la landing page comercial de alta conversión desplegada en Vercel para distribución del instalador oficial Windows (`CRM-Gestión-v1.0.26-Setup.exe`) y captura de leads.
 
 ```mermaid
 graph TD
-    User["Usuario Final"] -->|Interactúa con UI| App["Web CRM Gestión"]
-    App -->|Almacenamiento Local / Estado| Storage["Persistencia Local / Estado"]
-    App -->|Consultas y Servicios| Backend["APIs / Backend / Servicios"]
+    User["Visitante / Cliente"] -->|Navega y Descarga| Landing["Landing Web (index.html + css/styles.css)"]
+    User -->|Envía Formulario| ContactJS["Cliente de Leads (js/contact.js)"]
+    ContactJS -->|POST JSON source: Web CRM Gestión| CentralAPI["API Central ABL (aritz-bahamonde.vercel.app/api/contact)"]
 ```
 
-## 2. VISTA DE CONTENEDORES (NIVEL 2 C4)
-- **Capa de Presentación:** Interfaz de usuario basada en componentes reactivos y estilos adaptativos.
-- **Capa Lógica:** Manejo de estado, controladores de eventos y algoritmos de negocio.
-- **Capa de Datos:** Modelos de datos, validación y gestión de persistencia.
+## 2. VISTA DE MÓDULOS (< 300 LÍNEAS POR ARCHIVO)
+- **Estructura Semántica (`index.html`):** Maquetación accesible con activos `.avif` optimizados y atributos `width`/`height` explícitos.
+- **Estilos (`css/styles.css`):** Variables CSS, gradientes, animaciones y utilidades glassmorphism.
+- **Interacciones (`js/ui.js`):** Gestión de cookies, menú móvil, lightbox de capturas y modales legales.
+- **Captura de Leads (`js/contact.js`):** Envío único con debounce hacia el endpoint centralizado de contacto.
