@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script defer src="js/contact.js"></script>
     <script defer src="js/ui.js"></script>
+    <link rel="stylesheet" href="./fernando.css">
 </head>
 <body class="selection:bg-blue-500/30 prevent-overflow">
     <div class="fixed inset-0 hero-gradient pointer-events-none"></div>
@@ -293,5 +294,30 @@
             </div>
         </div>
     </div>
+
+  <!-- AVATAR DE VOZ DE FERNANDO (CARGA ESTÁTICA INSTANTÁNEA) -->
+  <div id="fernando-voice-avatar" class="voice-agent-avatar heartbeat-float" role="button" tabindex="0" aria-label="Hablar con Fernando, asesor de IA" title="Hablar con Fernando, asesor de IA">
+    <div class="avatar-image-container">
+      <img 
+        src="./fernando.webp" 
+        alt="Fernando AI" 
+        class="avatar-img" 
+        loading="eager"
+        decoding="async"
+        width="136" 
+        height="136"
+        style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.45); transform-origin: center 15%; transition: transform 0.3s ease, filter 0.3s ease;"
+      />
+    </div>
+    <div class="avatar-status-label" id="fernando-status-label" style="display: none;"></div>
+    <div class="avatar-pulse" id="fernando-pulse" style="display: none;"></div>
+  </div>
+
+  <script type="module">
+    import { initFernandoAvatar } from './src/fernandoAvatar.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      initFernandoAvatar();
+    });
+  </script>
 </body>
 </html>

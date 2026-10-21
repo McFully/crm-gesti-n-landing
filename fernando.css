@@ -1,0 +1,195 @@
+/* =========================================================
+   FERNANDO VOICE AGENT - ESTILOS VISUALES PREMIUM
+   ========================================================= */
+
+.voice-agent-avatar {
+  position: fixed;
+  bottom: calc(2rem + 50px);
+  right: 2rem;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 900;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  background: rgba(18, 29, 21, 0.7);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  --voice-scale: 1;
+  transform: translate3d(0, 0, 0) scale(var(--voice-scale));
+  will-change: transform;
+}
+
+.voice-agent-avatar:hover {
+  transform: translate3d(0, 0, 0) scale(calc(1.08 * var(--voice-scale)));
+  border-color: #a3e635;
+  box-shadow: 0 0 30px rgba(163, 230, 53, 0.45);
+}
+
+.heartbeat-float {
+  animation: avatarFloat 4s ease-in-out infinite;
+}
+
+@keyframes avatarFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(var(--voice-scale));
+  }
+  50% {
+    transform: translate3d(0, -6px, 0) scale(var(--voice-scale));
+  }
+}
+
+@media (min-width: 769px) {
+  .voice-agent-avatar.active {
+    width: 180px;
+    height: 180px;
+    transform: translate3d(calc(-50vw + 2rem + 90px), calc(-50vh + 2rem + 50px + 90px), 0) scale(3.5) !important;
+    border-color: #a3e635;
+    box-shadow: 0 0 100px rgba(163, 230, 53, 0.75);
+    background: rgba(18, 29, 21, 0.85);
+  }
+}
+
+@media (max-width: 768px) {
+  .voice-agent-avatar {
+    width: 93px;
+    height: 93px;
+    bottom: calc(1.25rem + 50px);
+    right: 1.25rem;
+    border-width: 2.5px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  .voice-agent-avatar.active {
+    width: 78vw !important;
+    height: 78vw !important;
+    max-width: 285px !important;
+    max-height: 285px !important;
+    bottom: 50% !important;
+    right: 50% !important;
+    transform: translate(50%, 50%) scale(var(--voice-scale)) !important;
+  }
+  .avatar-status-label {
+    font-size: 0.85rem !important;
+    letter-spacing: 0.1rem !important;
+    top: 85% !important;
+  }
+  .voice-agent-avatar.active .avatar-status-label {
+    font-size: 1.03rem !important;
+    letter-spacing: 0.14rem !important;
+    top: 85% !important;
+    transform: translate(-50%, -50%) scale(1.1) !important;
+  }
+}
+
+.avatar-image-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  pointer-events: none;
+}
+
+.voice-agent-avatar.active .avatar-image-container img {
+  filter: brightness(0.95) contrast(1.08);
+}
+
+.avatar-status-label {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  z-index: 10;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 1), 0 0 24px #a3e635;
+  pointer-events: none;
+  animation: fernandoFadeInOut 2s infinite;
+  white-space: nowrap;
+}
+
+.voice-agent-avatar.active .avatar-status-label {
+  transform: translate(-50%, -50%) scale(0.5);
+  font-size: 1.03rem;
+  letter-spacing: 0.16rem;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 1), 0 0 30px #a3e635;
+}
+
+@keyframes fernandoFadeInOut {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.avatar-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid #a3e635;
+  animation: fernandoRingPulse 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes fernandoRingPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+.voice-agent-avatar.speaking {
+  border-color: #a3e635;
+  box-shadow: 0 0 45px rgba(163, 230, 53, 0.7);
+  animation: fernandoSpeakingVibe 0.35s infinite ease-in-out;
+}
+
+@keyframes fernandoSpeakingVibe {
+  0%, 100% { transform: scale(1.04); }
+  50% { transform: scale(1.12); }
+}
+
+.voice-agent-avatar.active.speaking {
+  animation: none !important;
+}
+
+.voice-agent-avatar.thinking {
+  border-color: #38bdf8;
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+}
+
+.voice-agent-avatar.active.thinking {
+  border-color: #38bdf8;
+  box-shadow: 0 0 120px rgba(56, 189, 248, 0.9);
+}
+
+.avatar-pulse.thinking {
+  border-color: #38bdf8;
+}
+
+.avatar-status-label.thinking {
+  text-shadow: 0 0 15px rgba(0,0,0,1), 0 0 30px #38bdf8;
+}
+
+.voice-agent-avatar.taking-notes {
+  border-color: #fbbf24;
+  box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+}
+
+.voice-agent-avatar.active.taking-notes {
+  border-color: #fbbf24;
+  box-shadow: 0 0 120px rgba(251, 191, 36, 0.9);
+}
+
+.avatar-pulse.taking-notes {
+  border-color: #fbbf24;
+}
+
+.avatar-status-label.taking-notes {
+  text-shadow: 0 0 15px rgba(0,0,0,1), 0 0 30px #fbbf24;
+}
