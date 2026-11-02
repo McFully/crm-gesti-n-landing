@@ -36,7 +36,7 @@ export function initFernandoAvatar() {
         if (pulseEl) pulseEl.style.display = 'none';
       } else if (state.isTakingNotes) {
         if (statusLabel) {
-          statusLabel.textContent = 'Fernando tomando nota...';
+          statusLabel.textContent = 'Tomando nota...';
           statusLabel.className = 'avatar-status-label taking-notes';
           statusLabel.style.display = 'block';
         }
@@ -56,7 +56,7 @@ export function initFernandoAvatar() {
         }
       } else if (state.isSpeaking) {
         if (statusLabel) {
-          statusLabel.textContent = 'Fernando hablando...';
+          statusLabel.textContent = 'Hablando...';
           statusLabel.className = 'avatar-status-label';
           statusLabel.style.display = 'block';
         }
