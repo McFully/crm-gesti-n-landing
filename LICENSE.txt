@@ -1,10 +1,11 @@
-ACUERDO DE LICENCIA DE PROPIEDAD INTELECTUAL Y SOFTWARE PRIVATIVO - CRM Gestión
-Versión: v1.0.25
+PROPIEDAD INTELECTUAL Y DERECHOS DE AUTOR
+=========================================
 
 © 2026 Aritz Bahamonde Larxé. Todos los derechos reservados.
 
-Este software, su código fuente, diseño de interfaz, arquitectura y documentación asociada son propiedad intelectual exclusiva de Aritz Bahamonde Larxé. Queda terminantemente prohibida su copia, redistribución, ingeniería inversa, modificación, sublicencia o uso comercial no autorizado sin el consentimiento previo, expreso y por escrito del titular de los derechos.
+Queda estrictamente prohibida la reproducción total o parcial de este software,
+así como su distribución, comercialización, descompilación, ingeniería inversa
+o modificación sin la autorización expresa y por escrito del titular legítimo
+de los derechos: Aritz Bahamonde Larxé.
 
-Al instalar, acceder o utilizar este software o su plataforma web asociada, el usuario reconoce a Aritz Bahamonde Larxé como el único publicador y propietario legítimo del ecosistema.
-
-EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A LAS GARANTÍAS DE COMERCIABILIDAD, ADECUACIÓN PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO EL AUTOR O TITULAR DEL COPYRIGHT SERÁ RESPONSABLE POR CUALQUIER RECLAMACIÓN, DAÑO O RESPONSABILIDAD QUE SURJA DEL USO O EN RELACIÓN CON EL SOFTWARE.
+Este software es propiedad privativa y exclusiva.
